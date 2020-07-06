@@ -1,0 +1,11 @@
+name: 'Quartermaster linter update chart dependencies'
+description: 'Update Helm dependencies'
+author: 'Soren Mathiasen'
+runs:
+  using: 'docker'
+  image: 'docker://eu.gcr.io/tradeshift-public/helm-check:latest'
+  args:
+  - 'kubernetes'
+branding:
+  icon: 'check-square'
+  color: 'blue'
