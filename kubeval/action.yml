@@ -1,0 +1,9 @@
+name: 'Kubeval linter update chart dependencies'
+description: 'Run kubeval on helm charts'
+author: 'Soren Mathiasen'
+runs:
+  using: 'docker'
+  image: 'docker://eu.gcr.io/tradeshift-public/helm-linter-kubeval:1.1.0'
+branding:
+  icon: 'check-square'
+  color: 'blue'
