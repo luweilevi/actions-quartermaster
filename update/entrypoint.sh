@@ -13,7 +13,7 @@ update_charts_dependencies() {
       HELM_INITIALIZED=true
     fi
 
-    if [[ ("${chart_path}/requirements.yaml" && ! -d "${chart_path}/charts") || $(cat "${chart_path}/Chart.yaml" | grep -E "dependencies:")  ]]; then
+    if [[ ( -f "${chart_path}/requirements.yaml" && ! -d "${chart_path}/charts") || $(cat "${chart_path}/Chart.yaml" | grep -E "dependencies:")  ]]; then
       ${HELM_BIN} dependencies update ${chart_path}
     else
       echo "No external dependencies found for ${chart_path}."
