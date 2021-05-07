@@ -4,14 +4,7 @@ update_charts_dependencies() {
   local CHARTS_DIR=kubernetes/charts
 
   for chart_path in ${CHARTS_DIR}/*; do
-    local HELM_BIN=helm
-
-    if [[ $(cat "${chart_path}/Chart.yaml" | grep -E "apiVersion: .?v2") ]]; then
-      HELM_BIN=helm3
-    elif [[ $HELM_INITIALIZED = false ]]; then
-      helm init --client-only
-      HELM_INITIALIZED=true
-    fi
+    HELM_BIN=helm3
 
     if [[ ( -f "${chart_path}/requirements.yaml" && ! -d "${chart_path}/charts") || $(cat "${chart_path}/Chart.yaml" | grep -E "dependencies:")  ]]; then
       ${HELM_BIN} dependencies update ${chart_path}
