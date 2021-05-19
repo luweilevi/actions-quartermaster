@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: actions-quartermaster
+  description: |
+    Github action for linting Helm charts and Kubernetes resources
+  annotations:
+    github.com/project-slug: Tradeshift/actions-quartermaster
+  tags:
+    - typescript
+    - github-action
+spec:
+  type: library
+  owner: developer-productivity
+  lifecycle: production
