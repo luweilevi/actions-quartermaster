@@ -7,8 +7,8 @@ metadata:
   annotations:
     github.com/project-slug: Tradeshift/actions-quartermaster
   tags:
-    - typescript
     - github-action
+    - docker
 spec:
   type: library
   owner: developer-productivity
