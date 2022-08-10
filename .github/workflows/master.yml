@@ -1,0 +1,52 @@
+name: Master build
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-kubeval:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Docker build kubeval
+        uses: tradeshift/actions-docker@v1
+        with:
+          context: kubeval
+          repository: eu.gcr.io/tradeshift-public/helm-linter-kubeval
+          password: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY_NOBASE64 }}
+          tags: |
+              eu.gcr.io/tradeshift-public/helm-linter-kubeval:latest
+              
+  build-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Docker build update
+        uses: tradeshift/actions-docker@v1
+        with:
+          context: update
+          repository: eu.gcr.io/tradeshift-public/helm-linter-update
+          password: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY_NOBASE64 }}
+          tags: |
+              eu.gcr.io/tradeshift-public/helm-linter-update:latest
+              
+  build-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Docker build validate
+        uses: tradeshift/actions-docker@v1
+        with:
+          context: validate
+          repository: eu.gcr.io/tradeshift-public/validate
+          password: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY_NOBASE64 }}
+          tags: |
+              eu.gcr.io/tradeshift-public/validate:latest
