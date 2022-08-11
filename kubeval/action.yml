@@ -3,7 +3,7 @@ description: 'Run kubeval on helm charts'
 author: 'Soren Mathiasen'
 runs:
   using: 'docker'
-  image: 'docker://eu.gcr.io/tradeshift-public/helm-linter-kubeval:1.2.0'
+  image: 'docker://eu.gcr.io/tradeshift-public/helm-linter-kubeval:latest'
 branding:
   icon: 'check-square'
   color: 'blue'

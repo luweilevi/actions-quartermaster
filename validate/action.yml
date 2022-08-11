@@ -3,7 +3,7 @@ description: 'Validates Kubernetes resourcs'
 author: 'Soren Mathiasen'
 runs:
   using: 'docker'
-  image: 'docker://eu.gcr.io/tradeshift-public/validate:1.2.0'
+  image: 'docker://eu.gcr.io/tradeshift-public/validate:latest'
 branding:
   icon: 'check-square'
   color: 'blue'
