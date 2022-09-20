@@ -1,9 +1,10 @@
-name: 'Kubernetes resource validator'
-description: 'Validates Kubernetes resourcs'
-author: 'Soren Mathiasen'
+name: Kubernetes validate
+description: Action to validate chart configurations with policies
 runs:
-  using: 'docker'
-  image: 'docker://eu.gcr.io/tradeshift-public/validate:latest'
-branding:
-  icon: 'check-square'
-  color: 'blue'
+  using: "composite"
+  steps:
+    - name: Apply Kyverno
+      uses: tradeshift/actions-quartermaster/kyverno@master
+
+    - name: Run quartermaster
+      uses: tradeshift/actions-quartermaster/quartermaster@master
