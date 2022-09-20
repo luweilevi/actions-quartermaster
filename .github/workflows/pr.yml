@@ -38,6 +38,7 @@ jobs:
       - name: Docker build validate
         uses: tradeshift/actions-docker@v1
         with:
-          context: quartermaster
+          context: validate
           repository: eu.gcr.io/tradeshift-public/validate
           password: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY_NOBASE64 }}
+        
