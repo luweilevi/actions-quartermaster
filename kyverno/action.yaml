@@ -34,8 +34,7 @@ runs:
               elif test -f ${OVERRIDE_PATH}/*_${CHART_NAME}.config.yaml; then
                 FILE_NAME=$(find $OVERRIDE_PATH -maxdepth 1 -mindepth 1 -name "*_${CHART_NAME}.config.yaml")
               else
-                echo "Error: Could not find override yaml file in ${OVERRIDE_PATH}."
-                exit 1
+                echo "Could not find override yaml file in ${OVERRIDE_PATH} for ${CHART_NAME} chart (${CHART_PATH})."
               fi
             else
               echo "Unknown override file path: ${OVERRIDE_PATH}"
