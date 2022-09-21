@@ -25,6 +25,14 @@ runs:
         EOT
         
         for CHART_PATH in ${CHARTS_DIR}/*; do
+        
+          # Update dependencies first
+          if [[ ( -f "${CHART_PATH}/requirements.yaml" && ! -d "${CHART_PATH}/charts") || $(cat "${CHART_PATH}/Chart.yaml" | grep -E "dependencies:")  ]]; then
+            helm dependencies update ${CHART_PATH}
+          else
+            echo "No external dependencies found for ${CHART_PATH}."
+          fi
+        
           CHART_NAME=$(basename ${CHART_PATH})
           for OVERRIDE_PATH in ${OVERRIDES_DIR}/*; do
             # if a dir does not start with eks, it's either a manifest for legacy cluster or a bogus dir
